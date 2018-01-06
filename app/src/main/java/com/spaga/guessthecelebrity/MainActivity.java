@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         if (view.getTag().toString().equals(Integer.toString(locationOfCorrectAns)))
             Toast.makeText(this, "Correct!", Toast.LENGTH_LONG).show();
         else
-            Toast.makeText(this, "Wrong! It was" + celebNames.get(chosenCeleb),
+            Toast.makeText(this, "Wrong! It was " + celebNames.get(chosenCeleb),
                     Toast.LENGTH_LONG).show();
         createNewQuestion();
     }
