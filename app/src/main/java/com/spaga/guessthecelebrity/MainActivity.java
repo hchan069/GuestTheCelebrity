@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -75,7 +76,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void chooseAnswer(View view) {
-
+        if (view.getTag().toString().equals(Integer.toString(locationOfCorrectAns)))
+            Toast.makeText(this, "Correct!", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(this, "Wrong! It was" + celebNames.get(chosenCeleb),
+                    Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -97,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             result = task.execute("http://www.posh24.se/kandisar").get();
             String[] splitResult = result.split("<div class=\"sidebarContainer\">");
 
-            Pattern p = Pattern.compile("src=\"(.*?)\"");
+            Pattern p = Pattern.compile("<img src=\"(.*?)\"");
             Matcher m = p.matcher(splitResult[0]);
             while (m.find()) {
                 celebImages.add(m.group(1));
